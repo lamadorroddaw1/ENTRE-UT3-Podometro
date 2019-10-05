@@ -3,31 +3,49 @@
  * acerca de los pasos, distancia, ..... que una persona (hombre o mujer)
  * ha dado en una semana. 
  * 
- * @author    - pon aquí tu nombre - 
+ * @author    - Lander Amador Rodriguez - 
  * 
  */
 public class Podometro {
    
+    private char hombre;
+    private char mujer;
+    private double zancada_Hombre;
+    private double zancada_Mujer;
+    private int sabado;
+    private int domingo;
+    private String marca;
+    private double altura;
+    private char sexo;
+    private double longitudZancada;
+    private int totalPasosLaborales;
+    private int totalPasosSabado;
+    private int totalPasosDomingo;
+    private int totalDistaniaSemana;
+    private int totalDistanciaFinSemana;
+    private int tiempo;
+    private int caminatasNoche;
     
-    
-
     /**
      * Inicializa el podómetro con la marca indicada por el parámetro.
      * El resto de atributos se ponen a 0 y el sexo, por defecto, es mujer
      */
-    public Podometro() {
-
-         
+    public Podometro(String queMarca) {
+        hombre = 'H';
+        mujer = 'M';
+        zancada_Hombre = 0.00;
+        zancada_Mujer = 0.00;
+        sabado = 0;
+        domingo = 0;
+        marca = queMarca;
     }
 
     /**
      * accesor para la marca
      * Probar que se ha enlazado correctamente
      */
-    public    getMarca() {
-
-        
-
+    public String getMarca() {
+       return marca;
     }
 
     /**
@@ -40,8 +58,14 @@ public class Podometro {
      *  
      */
     public void configurar(double queAltura, char queSexo) {
-
-        
+        altura = queAltura;
+        sexo = queSexo;
+        if (queSexo == 'M'){
+        longitudZancada = altura / 0.45; 
+        }        
+        if (queSexo == 'H'){
+        longitudZancada = altura / 0.41;
+        }        
     }
 
      /**
@@ -92,16 +116,16 @@ public class Podometro {
 
    
 
-    /**
-     *  Calcula y devuelve un String que representa el nombre del día
-     *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
-     */
-    public String diaMayorNumeroPasos() {
+    // /**
+     // *  Calcula y devuelve un String que representa el nombre del día
+     // *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
+     // */
+    // public String diaMayorNumeroPasos() {
 
         
         
 
-    }
+    // }
 
     /**
      * Restablecer los valores iniciales del podómetro
