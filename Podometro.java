@@ -22,7 +22,7 @@ public class Podometro {
 
     /**
      * accesor para la marca
-     *  
+     * Probar que se ha enlazado correctamente
      */
     public    getMarca() {
 
