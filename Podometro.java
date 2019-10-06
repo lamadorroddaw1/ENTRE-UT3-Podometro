@@ -1,3 +1,4 @@
+
 /**
  * La clase modela un sencillo podómetro que registra información
  * acerca de los pasos, distancia, ..... que una persona (hombre o mujer)
@@ -38,6 +39,7 @@ public class Podometro {
         sabado = 0;
         domingo = 0;
         marca = queMarca;
+        sexo = 'H';
     }
 
     /**
@@ -59,15 +61,17 @@ public class Podometro {
      */
     public void configurar(double queAltura, char queSexo) {
         altura = queAltura;
-        sexo = queSexo;
+        sexo = queSexo;        
         if (queSexo == 'M'){
-        longitudZancada = altura / 0.45; 
+        longitudZancada = Math.round (altura / 0.45);
+        zancada_Mujer = longitudZancada;
         }        
         if (queSexo == 'H'){
-        longitudZancada = altura / 0.41;
+        longitudZancada = Math.round (altura / 0.41);
+        zancada_Hombre = longitudZancada;
         }        
     }
-
+    
      /**
      *  Recibe cuatro parámetros que supondremos correctos:
      *    pasos - el nº de pasos caminados
@@ -81,14 +85,39 @@ public class Podometro {
      *   
      *   (leer enunciado del ejercicio)
      */
-    public void registrarCaminata(int pasos, int dia, int horaInicio,
-                            int horaFin) {
-
+    public void registrarCaminata(int pasos, int dia, int horaInicio,int horaFin) {        
+        switch (dia){
+            case 1:  dia = 1;
+            break;
+            case 2: dia = 2;
+            break;
+            case 3: dia = 3;
+            break;
+            case 4: dia = 4;
+            break;
+            case 5: dia = 5;
+            break;
+            case 6: dia = 6;
+            break;
+            case 7: dia = 7;
+            break;
+        }
+        if(dia >=5 && dia <=1){
+           pasos = totalPasosLaborales; 
+        }
+        if(dia == 6){
+            pasos = totalPasosSabado;
+        }
+        if(dia == 7){
+            pasos = totalPasosDomingo;
+        }
+        totalDistanciaFinSemana = totalPasosSabado + totalPasosDomingo;
+            
+        tiempo = horaFin - horaInicio;
         
-
     }
     
-     /**
+    /**
      * Muestra en pantalla la configuración del podómetro
      * (altura, sexo y longitud de la zancada)
      * 
